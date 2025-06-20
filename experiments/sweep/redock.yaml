@@ -1,0 +1,37 @@
+project: "cgflow-cameraready"
+program: ./scripts/exp1_redock_unidock.py
+name: "redock"
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - redock # group
+  - ./logs/exp1-redocking/ # storage
+  - ./data/envs/stock/ # env dir
+  - ./data/test/LIT-PCBA/ # pocket dir
+  - ../weights/plinder_till_end.ckpt # ckpt
+
+method: grid
+parameters:
+  protein:
+    values:
+      - ADRB2
+      - ALDH1
+      - ESR_ago
+      - ESR_antago
+      - FEN1
+      - GBA
+      - IDH1
+      - KAT2A
+      - MAPK1
+      - MTORC1
+      - OPRK1
+      - PKM2
+      - PPARG
+      - TP53
+      - VDR
+  seed:
+    values: [0, 1, 2]
+  num_inference_steps:
+    value: 50
